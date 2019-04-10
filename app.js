@@ -10,6 +10,26 @@ var users  = require('./routes/users');
 var fileUtil = require('./utils/fileUtil');
 var app = express();
 
+var sqlite3 = require('sqlite3').verbose()
+var db = new sqlite3.Database('ways.db3')
+
+db.serialize(function () {
+ /*  db.run('CREATE TABLE lorem (info TEXT)')
+  var stmt = db.prepare('INSERT INTO lorem VALUES (?)')
+
+  for (var i = 0; i < 10; i++) {
+    stmt.run('Ipsum ' + i)
+  }
+
+  stmt.finalize() */
+
+  db.each('SELECT id, name FROM user', function (err, row) {
+    console.log(row.id + ': ' + row.name)
+  })
+})
+
+db.close()
+
 // view engine setup
 app.use(express.static(path.join(__dirname, 'views')))
 app.engine('.html', require('ejs').__express);  

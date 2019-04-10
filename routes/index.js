@@ -1,22 +1,3 @@
-/* var models  = require('../models');
-var express = require('express');
-var router  = express.Router();
-
-router.get('/', function(req, res) {
-  models.User.findAll({
-    include: [ models.Task ]
-  }).then(function(users) {
-    res.render('index', {
-      title: 'Sequelize: Express Example',
-      users: users
-    });
-  });
-  res.end('===========================')
-});
-router.get('/test', function(req, res) {
-  res.end('===========================')
-});
-module.exports = router; */
 var express = require('express');
 var db = require('../utils/mssqlDbUtil.js');
 var mysqlDb = require('../utils/mysqlDbUtil.js');
