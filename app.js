@@ -22,23 +22,6 @@ console.log(JSON.stringify(pathArray)) */
 /* //读取所有叶子节点的文件路径
 var pathArray = fileUtil.getArrayLeafFiles('./public')
 console.log(JSON.stringify(pathArray)) */
-/* 
-var sql = require('mssql');
-//连接方式1："mssql://用户名:密码@ip地址（无需端口号）/SqlServer名/数据库名称"
-//连接方式2："mssql://用户名:密码@ip地址:1433(默认端口号)/数据库名称"
-sql.connect("mssql://ways:admin@localhost:1433/demo").then(function() {
-//sql.connect("mssql://sa:123@localhost:1433/test").then(function() {
-    // Query
-    console.log('===================================')
-    new sql.Request().query('select * from room').then(function(recordset) {
-        console.log(recordset);
-    }).catch(function(err) {
-       console.log(err);
-    });
-    // Stored Procedure
-}).catch(function(err) {
-    console.log(err);
-}); */
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -51,15 +34,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
-// catch 404 and forward to error handler
+// 捕获404跳转页面的控制器
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
-// error handler
-// no stacktraces leaked to user unless in development environment
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
