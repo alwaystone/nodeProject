@@ -1,0 +1,155 @@
+{
+  "status": {
+    "message": "用户列表查询成功",
+    "state": "success",
+    "code": "0"
+  },
+  "data": {
+    "data": [
+      {
+        "memo": "备注2",
+        "org_id": "c4884d5e-414e-11e9-9d49-7cd30aeb130c",
+        "name": "李逵",
+        "status": 0,
+        "card_id": null,
+        "insert_time": "2019-03-08 14:51:05.961581",
+        "phone": "13011115555",
+        "org_name": "黑龙江省",
+        "id": "c623b5a3-0a71-4844-ba87-bc0a572474d2"
+      },
+      {
+        "memo": "备注1",
+        "org_id": "c4884d5e-414e-11e9-9d49-7cd30aeb130c",
+        "name": "刘备",
+        "status": 0,
+        "card_id": null,
+        "insert_time": "2019-03-08 14:51:38.799826",
+        "phone": "13912312312",
+        "org_name": "黑龙江省",
+        "id": "1265a943-9b04-455a-ba28-71ea1ca8802f"
+      },
+      {
+        "memo": "1",
+        "org_id": "cca6d87a-414e-11e9-9d49-7cd30aeb130c",
+        "name": "曹操",
+        "status": 0,
+        "card_id": null,
+        "insert_time": "2019-03-08 14:56:28.143974",
+        "phone": "13012312316",
+        "org_name": "辽宁省",
+        "id": "91b90385-3ece-475e-a153-74919cd0952c"
+      },
+      {
+        "memo": "吴用修改",
+        "org_id": "cca6d87a-414e-11e9-9d49-7cd30aeb130c",
+        "name": "吴用",
+        "status": 0,
+        "card_id": null,
+        "insert_time": "2019-03-08 14:46:00.416085",
+        "phone": "13012345555",
+        "org_name": "辽宁省",
+        "id": "ad9ff2c1-4a92-48cc-885a-c6ed5d7343ab"
+      },
+      {
+        "memo": "8",
+        "org_id": "cca6d87a-414e-11e9-9d49-7cd30aeb130c",
+        "name": "关云长",
+        "status": 0,
+        "card_id": null,
+        "insert_time": "2019-03-11 08:40:31.647541",
+        "phone": "13812312312",
+        "org_name": "辽宁省",
+        "id": "6a286898-ad1b-4c5e-876b-4f82c05bbb6c"
+      },
+      {
+        "memo": "备注111",
+        "org_id": "be0fc902-426b-11e9-ae3a-7cd30aeb130c",
+        "name": "孙权",
+        "status": 2,
+        "card_id": null,
+        "insert_time": "2019-03-07 12:29:24.466934",
+        "phone": "13500001111",
+        "org_name": "北京",
+        "id": "9620c436-4091-11e9-be61-7cd30aeb130c"
+      },
+      {
+        "memo": "备注",
+        "org_id": "be0fc902-426b-11e9-ae3a-7cd30aeb130c",
+        "name": "武松",
+        "status": 0,
+        "card_id": null,
+        "insert_time": "2019-03-12 09:24:55.242045",
+        "phone": "18811113333",
+        "org_name": "北京",
+        "id": "12178027-a8a0-4332-8cbd-d9bacfd538d5"
+      },
+      {
+        "memo": "备注",
+        "org_id": "6591d50c-4164-11e9-896e-7cd30aeb130c",
+        "name": "赵云",
+        "status": 0,
+        "card_id": null,
+        "insert_time": "2019-03-12 14:28:05.080771",
+        "phone": "18601230123",
+        "org_name": "沈阳市",
+        "id": "d636cea2-a121-4f97-afbf-b13ec7d6a8d5"
+      },
+      {
+        "memo": "备注",
+        "org_id": "6591d50c-4164-11e9-896e-7cd30aeb130c",
+        "name": "张飞",
+        "status": 0,
+        "card_id": null,
+        "insert_time": "2019-03-12 14:32:04.819714",
+        "phone": "18901230123",
+        "org_name": "沈阳市",
+        "id": "dc007fba-1be2-4cc1-b5ac-0813ee0c714f"
+      },
+      {
+        "memo": "备注",
+        "org_id": "6591d50c-4164-11e9-896e-7cd30aeb130c",
+        "name": "林冲",
+        "status": 0,
+        "card_id": null,
+        "insert_time": "2019-03-12 14:33:00.515827",
+        "phone": "18001230123",
+        "org_name": "沈阳市",
+        "id": "d09607eb-7cd7-4132-a7cb-5d5c6b669bd5"
+      },
+      {
+        "memo": "备注",
+        "org_id": "6591d50c-4164-11e9-896e-7cd30aeb130c",
+        "name": "林子",
+        "status": 0,
+        "card_id": null,
+        "insert_time": "2019-03-12 14:54:08.825716",
+        "phone": "15001230123",
+        "org_name": "沈阳市",
+        "id": "47ae1d4e-d770-4c1d-ba7c-06f4b4238bdb"
+      },
+      {
+        "memo": "备注123",
+        "org_id": "c4884d5e-414e-11e9-9d49-7cd30aeb130c",
+        "name": "宋江",
+        "status": 2,
+        "card_id": null,
+        "insert_time": "2019-03-08 14:45:01.539838",
+        "phone": "13012345678",
+        "org_name": "黑龙江省",
+        "id": "c916c428-5927-4037-8f4a-c4acffac8952"
+      },
+      {
+        "memo": "测试",
+        "org_id": "cca6d87a-414e-11e9-9d49-7cd30aeb130c",
+        "name": "关木",
+        "status": 2,
+        "card_id": null,
+        "insert_time": "2019-03-07 13:15:25.665168",
+        "phone": "13012312312",
+        "org_name": "辽宁省",
+        "id": "03ee2bec-4098-11e9-b37e-7cd30aeb130c"
+      }
+    ],
+    "total": 13
+  }
+}
