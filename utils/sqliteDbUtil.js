@@ -3,27 +3,36 @@
 */
 var fs = require('fs');
 var sqlite3 = require('sqlite3').verbose();
+var log4js = require('log4js');
+
+log4js.configure('./config/log4js.json');
+var logger = log4js.getLogger();
+logger.level = 'debug';
+
 var DB = DB || {};
 DB.SqliteDB = function(file){
     DB.db = new sqlite3.Database(file);
  
     DB.exist = fs.existsSync(file);
     if(!DB.exist){
-        console.log("Creating db file!");
+        logger.info("Creating db file!");
         fs.openSync(file, 'w');
     };
 };
  
 DB.printErrorInfo = function(err){
-    console.log("Error Message:" + err.message + " ErrorNumber:" + errno);
+    logger.error("Error Message:" + err.message);
 };
  
 DB.SqliteDB.prototype.createTable = function(sql){
     DB.db.serialize(function(){
         DB.db.run(sql, function(err){
+            logger.info(sql)
             if(null != err){
                 DB.printErrorInfo(err);
                 return;
+            }else{
+                logger.error("Error Message:" + err.message);
             }
         });
     });
@@ -32,6 +41,7 @@ DB.SqliteDB.prototype.createTable = function(sql){
 /// tilesData format; [[level, column, row, content], [level, column, row, content]]
 DB.SqliteDB.prototype.insertData = function(sql, objects){
     DB.db.serialize(function(){
+        logger.info(sql)
         var stmt = DB.db.prepare(sql);
         for(var i = 0; i < objects.length; ++i){
             stmt.run(objects[i]);
@@ -45,6 +55,8 @@ DB.SqliteDB.prototype.queryData = function(sql, callback){
         if(null != err){
             DB.printErrorInfo(err);
             return;
+        }else{
+            logger.error(sql+"Error Message:" + err.message);
         }
         /// deal query data.
         if(callback){
@@ -57,6 +69,8 @@ DB.SqliteDB.prototype.executeSql = function(sql){
     DB.db.run(sql, function(err){
         if(null != err){
             DB.printErrorInfo(err);
+        }else{
+            logger.error(sql+"Error Message:" + err.message);
         }
     });
 };

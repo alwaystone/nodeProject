@@ -5,6 +5,11 @@ sqlserver查询添加封装，使用最多的还是executeSql，此方法直接�
  **/
 const mssql = require("mssql");
 const conf = require("../config/config.js");
+var log4js = require('log4js');
+
+log4js.configure('./config/log4js.json');
+var logger = log4js.getLogger();
+logger.level = 'debug';
 
 let restoreDefaults = function () {
     conf.sqlserverConfig;
@@ -12,12 +17,14 @@ let restoreDefaults = function () {
 const con = new mssql.ConnectionPool(conf.sqlserverConfig);
 con.on('error', err => {
     if (err) {
+        logger.error(err);
         throw err;
     }
 });
 
 con.connect(err => {
     if (err) {
+        logger.error(err);
         console.error(err);
     }
 });
@@ -34,18 +41,20 @@ let querySql = async function (sql, params, callBack) {
                 }
             }
         }
+        logger.info(sql)
         ps.prepare(sql, err => {
             if (err)
-                console.log(err);
+                logger.error(err);
             ps.execute(params, (err, recordset) => {
                 callBack(err, recordset);
                 ps.unprepare(err => {
                     if (err)
-                        console.log(err);
+                        logger.error(err);
                 });
             });
         });
     }catch(err){
+        logger.error(err);
         console.error('SQL error', err);
     }
     restoreDefaults();
@@ -71,18 +80,20 @@ var select = async function (tableName, topNumber, whereSql, params, orderSql, c
         }
         sql += orderSql;
         console.log(sql);
+        logger.info(sql)
         ps.prepare(sql, err => {
             if (err)
-                console.log(err);
+            logger.error(err);
             ps.execute(params, (err, recordset) => {
                 callBack(err, recordset);
                 ps.unprepare(err => {
                     if (err)
-                        console.log(err);
+                        logger.error(err);
                 });
             });
         });
     }catch(err){
+        logger.error(err);
         console.error('SQL error', err);
     }
     restoreDefaults();
@@ -92,18 +103,20 @@ var selectAll = async function (tableName, callBack) {
     try{
         var ps = new mssql.PreparedStatement(con);
         var sql = "select * from " + tableName + " ";
+        logger.info(sql)
         ps.prepare(sql, err => {
             if (err)
-                console.log(err);
+                logger.error(err);
             ps.execute("", (err, recordset) => {
                 callBack(err, recordset);
                 ps.unprepare(err => {
                     if (err)
-                        console.log(err);
+                        logger.error(err);
                 });
             });
         });
     }catch(err){
+        logger.error(err);
         console.error('SQL error', err);
     }
     restoreDefaults();
@@ -132,18 +145,20 @@ var add = async function (addObj, tableName, callBack) {
             }
         }
         sql = sql.substring(0, sql.length - 1) + ")";
+        logger.info(sql)
         ps.prepare(sql, err => {
             if (err)
-                console.log(err);
+                logger.error(err);
             ps.execute(addObj, (err, recordset) => {
                 callBack(err, recordset);
                 ps.unprepare(err => {
                     if (err)
-                        console.log(err);
+                        logger.error(err);
                 });
             });
         });
     }catch(err){
+        logger.error(err);
         console.error('SQL error', err);
     }
     restoreDefaults();
@@ -177,18 +192,20 @@ var update = async function (updateObj, whereObj, tableName, callBack) {
             }
         }
         sql = sql.substring(0, sql.length - 5);
+        logger.info(sql)
         ps.prepare(sql, err => {
             if (err)
-                console.log(err);
+                logger.error(err);
             ps.execute(updateObj, (err, recordset) => {
                 callBack(err, recordset);
                 ps.unprepare(err => {
                     if (err)
-                        console.log(err);
+                        logger.error(err);
                 });
             });
         });
     }catch(err){
+        logger.error(err);
         console.error('SQL error', err);
     }
     restoreDefaults();
@@ -208,18 +225,20 @@ var del = async function (whereSql, params, tableName, callBack) {
             }
         }
         sql += whereSql;
+        logger.info(sql)
         ps.prepare(sql, err => {
             if (err)
-                console.log(err);
+                logger.error(err);
             ps.execute(params, (err, recordset) => {
                 callBack(err, recordset);
                 ps.unprepare(err => {
                     if (err)
-                        console.log(err);
+                        logger.error(err);
                 });
             });
         });
     }catch(err){
+        logger.error(err);
         console.error('SQL error', err);
     }
     restoreDefaults();
@@ -228,18 +247,20 @@ var del = async function (whereSql, params, tableName, callBack) {
 var executeSql = async function (sql, callBack) {
     try{
         var ps = new mssql.PreparedStatement(con);
+        logger.info(sql)
         ps.prepare(sql, err => {
             if (err)
-                console.log(err);
+                logger.error(err);
             ps.execute("", (err, recordset) => {
                 callBack(err, recordset);
                 ps.unprepare(err => {
                     if (err)
-                        console.log(err);
+                        logger.error(err);
                 });
             });
         });
     }catch(err){
+        logger.error(err);
         console.error('SQL error', err);
     }
     restoreDefaults();

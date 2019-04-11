@@ -23,7 +23,7 @@ let sqlserverConfig = {
   }
 };
 //http请求基础路径
-const baseUrl = '';
+const baseUrl = 'http://39.98.80.157:58083/v1';
 
 module.exports.mysqlConfig = mysqlConfig;
 module.exports.sqlserverConfig = sqlserverConfig;

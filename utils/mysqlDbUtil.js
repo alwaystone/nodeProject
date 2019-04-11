@@ -4,15 +4,22 @@
 var mysql = require('mysql');
 const conf = require("../config/config.js");
 var pool  = mysql.createPool(conf.mysqlConfig);
+var log4js = require('log4js');
+
+log4js.configure('./config/log4js.json');
+var logger = log4js.getLogger();
+logger.level = 'debug';
+
 //所有由后台获得的参数都要由	pool.escape('asdf')进行处理之后再进行拼接
 var query = function(sql, callback){
 	if (!sql) {
 		callback();
 		return;
-	}
+  }
+  logger.info(sql)
 	pool.query(sql, function(err, rows, fields) {
 	  if (err) {
-	    console.log(err);
+	    logger.error(err);
 	    callback(err, null);
 	    return;
 	  };
@@ -22,9 +29,10 @@ var query = function(sql, callback){
 
 // 查询所有数据
 let selectAll = (sql,callback)=>{
+  logger.info(sql)
   pool.query(sql,(err,result)=>{
     if(err){
-        console.log('错误信息-',err.sqlMessage);
+        logger.error(err);
         let errNews = err.sqlMessage;
         callback(errNews,'');
         return;
@@ -46,6 +54,7 @@ let insertData = (table,datas,callback)=>{
   values=values.slice(0,-1);
   console.log(fields,values);
   var sql="INSERT INTO "+table+'('+fields+') VALUES('+values+')';
+  logger.info(sql);
   pool.query(sql,callback);
 }
 // 更新一条数据
@@ -65,7 +74,7 @@ let updateData=function(table,sets,where,callback){
     // UPDATE user SET Password='321' WHERE UserId=12
     //update table set username='admin2',age='55'   where id="5";
     var sql="UPDATE "+table+' SET '+_SETS+' WHERE '+_WHERE;
-    console.log(sql);
+    logger.info(sql);
     pool.query(sql,callback);
 }
 
@@ -78,6 +87,7 @@ let deleteData=function(table,where,callback){
     }
     // DELETE  FROM user WHERE UserId=12  注意UserId的数据类型要和数据库一致
     var sql="DELETE  FROM "+table+' WHERE '+_WHERE;
+    logger.info(sql);
     pool.query(sql,callback);
 }
 

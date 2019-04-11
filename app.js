@@ -10,16 +10,19 @@ var users  = require('./routes/users');
 var fileUtil = require('./utils/fileUtil');
 var scheduleUtil = require('./utils/scheduleUtil');
 var app = express();
-
+/* 
+logger.info("this is a log4js test1111111111111!");
+logger.info("this is a log4js test1111111111111!");
+console.log("test test!!"); */
 //模拟发送http请求
-/* var request = require("./utils/httpRequestUtil");
+var request = require("./utils/httpRequestUtil");
 request.httpRequest('/service/ucenter/login/accountValidate','post','',{
   username: '18200000000',
   password: '123456',
   systemcode: 'PT000001'
 }).then(response => {
   console.log(response)
-}) */
+})
 
 //定时任务实例   五秒调用一次
 //scheduleUtil.scheduleCronstyle();
@@ -39,7 +42,6 @@ console.log(JSON.stringify(pathArray)) */
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
