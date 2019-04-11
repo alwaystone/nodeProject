@@ -8,16 +8,18 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
+  console.log('======================================')
     /* db.selectAll('v_room', function (err, result) {//查询所有news表的数据
       console.log(result)
       //res.send(result)
       res.render('index'); // 重定向到index.html页面
     }); */
-    mysqlDb.query('select * from role_menu', function (err, rows, fields) {//查询所有news表的数据
+    /* mysqlDb.query('select * from role_menu', function (err, rows, fields) {//查询所有news表的数据
       console.log(rows[0].count)
       res.send(rows)
       res.render('index'); // 重定向到index.html页面
-    })
+    }) */
+    res.render('index'); // 重定向到index.html页面
 });
 
 router.get('/getAll', function (req, res, next) { // 在index.html的初始化加载部分已经调用过了

@@ -1,5 +1,7 @@
 /**
- *sqlserver Model
+sqlserver Model
+sqlserver查询添加封装，使用最多的还是executeSql，此方法直接使用sql语句，较为灵活
+
  **/
 const mssql = require("mssql");
 const conf = require("../config/sqlserverConfig.js");

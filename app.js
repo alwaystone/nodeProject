@@ -8,27 +8,11 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users  = require('./routes/users');
 var fileUtil = require('./utils/fileUtil');
+var scheduleUtil = require('./utils/scheduleUtil');
 var app = express();
 
-var sqlite3 = require('sqlite3').verbose()
-var db = new sqlite3.Database('ways.db3')
-
-db.serialize(function () {
- /*  db.run('CREATE TABLE lorem (info TEXT)')
-  var stmt = db.prepare('INSERT INTO lorem VALUES (?)')
-
-  for (var i = 0; i < 10; i++) {
-    stmt.run('Ipsum ' + i)
-  }
-
-  stmt.finalize() */
-
-  db.each('SELECT id, name FROM user', function (err, row) {
-    console.log(row.id + ': ' + row.name)
-  })
-})
-
-db.close()
+//定时任务实例   五秒调用一次
+//scheduleUtil.scheduleCronstyle();
 
 // view engine setup
 app.use(express.static(path.join(__dirname, 'views')))

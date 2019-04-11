@@ -1,4 +1,6 @@
-
+/* 
+  mysql查询封装，使用最多应该是query方法，使用起来更为灵活
+*/
 var mysql = require('mysql');
 const conf = require("../config/mysqlConfig.js");
 var pool  = mysql.createPool(conf);
