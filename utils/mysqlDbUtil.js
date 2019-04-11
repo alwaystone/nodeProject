@@ -2,8 +2,8 @@
   mysql查询封装，使用最多应该是query方法，使用起来更为灵活
 */
 var mysql = require('mysql');
-const conf = require("../config/mysqlConfig.js");
-var pool  = mysql.createPool(conf);
+const conf = require("../config/config.js");
+var pool  = mysql.createPool(conf.mysqlConfig);
 //所有由后台获得的参数都要由	pool.escape('asdf')进行处理之后再进行拼接
 var query = function(sql, callback){
 	if (!sql) {

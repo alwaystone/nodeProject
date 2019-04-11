@@ -11,6 +11,16 @@ var fileUtil = require('./utils/fileUtil');
 var scheduleUtil = require('./utils/scheduleUtil');
 var app = express();
 
+//模拟发送http请求
+/* var request = require("./utils/httpRequestUtil");
+request.httpRequest('/service/ucenter/login/accountValidate','post','',{
+  username: '18200000000',
+  password: '123456',
+  systemcode: 'PT000001'
+}).then(response => {
+  console.log(response)
+}) */
+
 //定时任务实例   五秒调用一次
 //scheduleUtil.scheduleCronstyle();
 

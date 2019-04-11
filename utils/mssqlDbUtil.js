@@ -4,12 +4,12 @@ sqlserver查询添加封装，使用最多的还是executeSql，此方法直接�
 
  **/
 const mssql = require("mssql");
-const conf = require("../config/sqlserverConfig.js");
+const conf = require("../config/config.js");
 
 let restoreDefaults = function () {
-    conf;
+    conf.sqlserverConfig;
 };
-const con = new mssql.ConnectionPool(conf);
+const con = new mssql.ConnectionPool(conf.sqlserverConfig);
 con.on('error', err => {
     if (err) {
         throw err;
